@@ -32,7 +32,7 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5001
       - name: deploy
-        if: ${{ github.event_name == 'push' && !contains(fromJson('["#skip"]'), github.event.commits.*.message) }} 
+        if: ${{ github.event_name == 'push' && !contains(fromJson('["#skip"]'), github.event.commits) }}
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -50,7 +50,7 @@ jobs:
         with:
           fetch-depth: '0'
       - name: Bump version and push tag
-        if: ${{ github.event_name == 'push' && !contains(fromJson('["#skip"]'), github.event.commits.*.message) }} 
+        if: ${{ github.event_name == 'push' && !contains(fromJson('["#skip"]'), github.event.commits) }} 
         uses: anothrNick/github-tag-action@1.36.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
