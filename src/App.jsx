@@ -34,9 +34,6 @@ const App = () => {
           return <PokemonPage pokemonList={pokemonList} previous={previous} next={next} />
         }} />
       </Switch>
-      <div>
-        Giuseppe
-      </div>
     </Router>
   )
 }
