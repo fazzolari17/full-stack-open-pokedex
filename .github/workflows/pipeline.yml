@@ -31,17 +31,17 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5001
-  # deploy:
-  #   runs-on: ubuntu-20.04
-  #   needs: test
-  #   if: ${{ github.event_name == 'push'}}
-  #   steps:
-  #     - name: deploy
-  #       uses: akhileshns/heroku-deploy@v3.12.12
-  #       with:
-  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-  #         heroku_app_name: fullstackopen-cicd-fazzolari17
-  #         heroku_email: fazzolari17@gmail.com
-  #         healthcheck: "https://fullstackopen-cicd-fazzolari17.herokuapp.com/health"
-  #         checkstring: "ok"
-  #         rollbackonhealthcheckfailed: true
+  deploy:
+    runs-on: ubuntu-20.04
+    needs: test
+    if: ${{ github.event_name == 'push'}}
+    steps:
+      - name: deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: fullstackopen-cicd-fazzolari17
+          heroku_email: fazzolari17@gmail.com
+          healthcheck: "https://fullstackopen-cicd-fazzolari17.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
