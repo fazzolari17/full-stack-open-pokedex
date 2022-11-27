@@ -78,5 +78,5 @@ jobs:
         run: echo "$CONTAINS"
       - name: tester_true
         env:
-          CONTAINS: ${{ contains(github.event.commits.*.message, "#skip") }}
+          CONTAINS: ${{ contains(github.event.commits.*.message, '#skip') }}
         run: echo "$CONTAINS"
