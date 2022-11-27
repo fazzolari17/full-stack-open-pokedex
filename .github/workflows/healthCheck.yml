@@ -3,8 +3,6 @@ name: Health Check
 on: 
   schedule:
     - cron: 45,46,47,48,49,50  * * * *
-
-on: 
   push:
     branch:
       - master 
