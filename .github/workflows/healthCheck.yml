@@ -1,9 +1,13 @@
 name: Health Check
 
-on: 
-  schedule:
-  # will check once a day at 5:30 am 
-    - cron: 30, 5 * * *
+# Site is hosted on heroku and after they removed the free tier 
+# the daily health check fails. Should reenable once the hosting is 
+# moved to another website maybe netlify or something like that.
+
+# on: 
+#   schedule:
+#   # will check once a day at 5:30 am 
+#     - cron: 30, 5 * * *
 
 jobs: 
   test_schedule: 
